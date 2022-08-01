@@ -94,7 +94,7 @@ path = [
     cwd + '/src/common/pico_binary_info/include',
     cwd + '/src/rp2_common/pico_stdio/include',
     cwd + '/src/rp2_common/pico_stdio_uart/include',
-    ]
+]
 
 CPPDEFINES = [
     'PICO_NO_BINARY_INFO',
@@ -116,6 +116,7 @@ CPPDEFINES = [
     'PICO_STDIO_UART=1',
     'PICO_USE_BLOCKED_RAM=0'
 ]
+
 group = DefineGroup('pico-SDK', src, depend = ['PKG_USING_RASPBERRYPI_PICO_SDK'], CPPPATH = path, CPPDEFINES = CPPDEFINES)
 
 Return('group')
