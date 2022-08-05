@@ -56,6 +56,7 @@ src/rp2_common/pico_standard_link/crt0.S
 """)
 
 path = [
+     cwd + '/src',
     cwd + '/src/common/pico_stdlib/include',
     cwd + '/src/rp2_common/hardware_gpio/include',
     cwd + '/src/common/pico_base/include',
