@@ -55,10 +55,10 @@ src/rp2_common/pico_mem_ops/mem_ops_aeabi.S
 src/rp2_common/pico_standard_link/crt0.S
 """)
 
-path = [
-     cwd + '/src',
+CPPPATH = [
     cwd + '/src/common/pico_stdlib/include',
     cwd + '/src/rp2_common/hardware_gpio/include',
+    cwd + '/src/rp2_common/cmsis/include',
     cwd + '/src/common/pico_base/include',
     cwd + '/src/boards/include',
     cwd + '/src/rp2_common/pico_platform/include',
@@ -97,6 +97,11 @@ path = [
     cwd + '/src/rp2_common/pico_stdio_uart/include',
 ]
 
+# ASFLAGS = ' -I ' + cwd + '/src/rp2_common/hardware_divider/include'
+ASFLAGS = ''
+for path in CPPPATH:
+    ASFLAGS = ASFLAGS + ' -I ' + path
+
 CPPDEFINES = [
     'PICO_NO_BINARY_INFO',
     'PICO_NO_PROGRAM_INFO',
@@ -118,6 +123,6 @@ CPPDEFINES = [
     'PICO_USE_BLOCKED_RAM=0'
 ]
 
-group = DefineGroup('pico-SDK', src, depend = ['PKG_USING_RASPBERRYPI_PICO_SDK'], CPPPATH = path, CPPDEFINES = CPPDEFINES)
+group = DefineGroup('pico-SDK', src, depend = ['PKG_USING_RASPBERRYPI_PICO_SDK'], CPPPATH = CPPPATH, CPPDEFINES = CPPDEFINES, ASFLAGS = ASFLAGS)
 
 Return('group')
