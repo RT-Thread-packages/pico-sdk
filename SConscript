@@ -3,6 +3,7 @@ from building import *
 # get current directory
 cwd = GetCurrentDir()
 
+# src/rp2_common/pico_standard_link/new_delete.cpp
 # The set of source files associated with this SConscript file.
 src = Split("""
 src/rp2_common/pico_stdlib/stdlib.c
@@ -31,6 +32,7 @@ src/rp2_common/hardware_xosc/xosc.c
 src/rp2_common/hardware_pll/pll.c
 src/rp2_common/hardware_vreg/vreg.c
 src/rp2_common/hardware_irq/irq.c
+src/rp2_common/hardware_irq/irq_handler_chain.S
 src/rp2_common/pico_printf/printf.c
 src/rp2_common/pico_bootrom/bootrom.c
 src/rp2_common/pico_double/double_init_rom.c
@@ -42,8 +44,6 @@ src/rp2_common/pico_malloc/pico_malloc.c
 src/rp2_common/pico_standard_link/binary_info.c
 src/rp2_common/pico_stdio/stdio.c
 src/rp2_common/pico_stdio_uart/stdio_uart.c
-src/rp2_common/pico_standard_link/new_delete.cpp
-src/rp2_common/hardware_irq/irq_handler_chain.S
 src/rp2_common/pico_bit_ops/bit_ops_aeabi.S
 src/rp2_common/pico_divider/divider.S
 src/rp2_common/pico_double/double_aeabi.S
@@ -59,6 +59,7 @@ CPPPATH = [
     cwd + '/src/common/pico_stdlib/include',
     cwd + '/src/rp2_common/hardware_gpio/include',
     cwd + '/src/rp2_common/cmsis/include',
+    cwd + '/src/rp2_common/pico_malloc/include',
     cwd + '/src/common/pico_base/include',
     cwd + '/src/boards/include',
     cwd + '/src/rp2_common/pico_platform/include',
