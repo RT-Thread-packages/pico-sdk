@@ -39,7 +39,7 @@ void *__wrap_malloc(size_t size) {
 #endif
 #if PICO_DEBUG_MALLOC
     if (!rc || ((uint8_t *)rc) + size > (uint8_t*)PICO_DEBUG_MALLOC_LOW_WATER) {
-        printf("malloc %d %p->%p\n", (uint) size, rc, ((uint8_t *) rc) + size);
+        printf("malloc %u %p->%p\n", (uint) size, rc, ((uint8_t *) rc) + size);
     }
 #endif
     check_alloc(rc, size);
@@ -56,7 +56,7 @@ void *__wrap_calloc(size_t count, size_t size) {
 #endif
 #if PICO_DEBUG_MALLOC
     if (!rc || ((uint8_t *)rc) + size > (uint8_t*)PICO_DEBUG_MALLOC_LOW_WATER) {
-        printf("calloc %d %p->%p\n", (uint) (count * size), rc, ((uint8_t *) rc) + size);
+        printf("calloc %u %p->%p\n", (uint) (count * size), rc, ((uint8_t *) rc) + size);
     }
 #endif
     check_alloc(rc, size);

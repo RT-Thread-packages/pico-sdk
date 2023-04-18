@@ -114,7 +114,7 @@ struct python_output : public output_format {
                 if (it != jmp_labels.end()) {
                     fprintf(out, "    label(\"%s\")\n", it->second.c_str());
                 }
-                fprintf(out, "    %s # %d\n", disassemble(jmp_labels, inst, program.sideset_bits_including_opt.get(), program.sideset_opt).c_str(), i);
+                fprintf(out, "    %s # %u\n", disassemble(jmp_labels, inst, program.sideset_bits_including_opt.get(), program.sideset_opt).c_str(), i);
                 if (i == program.wrap) {
                     fprintf(out, "    wrap()\n");
                 }
