@@ -29,7 +29,7 @@ __vectors:
 .word __StackTop
 .word _reset_handler
 .word isr_nmi
-.word isr_hardfault
+.word HardFault_Handler
 .word isr_invalid // Reserved, should never fire
 .word isr_invalid // Reserved, should never fire
 .word isr_invalid // Reserved, should never fire
@@ -40,7 +40,7 @@ __vectors:
 .word isr_svcall
 .word isr_invalid // Reserved, should never fire
 .word isr_invalid // Reserved, should never fire
-.word isr_pendsv
+.word PendSV_Handler
 .word isr_systick
 .word isr_irq0
 .word isr_irq1
@@ -95,9 +95,9 @@ __default_isrs_start:
 // these are separated out for clarity
 decl_isr_bkpt isr_invalid
 decl_isr_bkpt isr_nmi
-decl_isr_bkpt isr_hardfault
+decl_isr_bkpt HardFault_Handler
 decl_isr_bkpt isr_svcall
-decl_isr_bkpt isr_pendsv
+decl_isr_bkpt PendSV_Handler
 decl_isr_bkpt isr_systick
 
 .global __default_isrs_end
@@ -256,7 +256,7 @@ platform_entry: // symbol for stack traces
     // (e.g. if main is in SRAM and crt0 in flash)
     ldr r1, =runtime_init
     blx r1
-    ldr r1, =main
+    ldr r1, =entry // rt-thread entry point
     blx r1
     ldr r1, =exit
     blx r1

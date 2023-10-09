@@ -36,6 +36,7 @@
 #endif
 
 extern char __StackLimit; /* Set by linker.  */
+extern void _exit(int status);
 
 uint32_t __attribute__((section(".ram_vector_table"))) ram_vector_table[48];
 
@@ -163,6 +164,8 @@ void runtime_init(void) {
 
     spin_locks_reset();
     irq_init_priorities();
+
+/* This part runs in rt-thread
     alarm_pool_init_default();
 
     // Start and end points of the constructor list,
@@ -176,9 +179,11 @@ void runtime_init(void) {
     for (void (**p)(void) = &__init_array_start; p < &__init_array_end; ++p) {
         (*p)();
     }
+*/
 
 }
 
+/* use default _exit()
 void __attribute__((noreturn)) __attribute__((weak)) _exit(__unused int status) {
 #if PICO_ENTER_USB_BOOT_ON_EXIT
     reset_usb_boot(0,0);
@@ -188,6 +193,7 @@ void __attribute__((noreturn)) __attribute__((weak)) _exit(__unused int status) 
     }
 #endif
 }
+*/
 
 __attribute__((weak)) void *_sbrk(int incr) {
     extern char end; /* Set by linker.  */
@@ -255,10 +261,12 @@ __attribute((weak)) int _kill(__unused pid_t pid, __unused int sig) {
     return -1;
 }
 
+/* use default exit()
 // exit is not useful... no desire to pull in __call_exitprocs
 void exit(int status) {
     _exit(status);
 }
+*/
 
 // incorrect warning from GCC 6
 GCC_Pragma("GCC diagnostic push")
