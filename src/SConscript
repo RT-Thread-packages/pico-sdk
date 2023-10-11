@@ -59,6 +59,7 @@ rp2_common/pico_float/float_v1_rom_shim.S
 rp2_common/hardware_divider/divider.S
 rp2_common/pico_mem_ops/mem_ops_aeabi.S
 rp2_common/pico_standard_link/crt0.S
+../bs2_default_padded_checksummed.S
 """)
 
 path = [
