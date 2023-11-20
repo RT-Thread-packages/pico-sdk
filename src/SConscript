@@ -109,6 +109,27 @@ path = [
     cwd + '/rp2_common/boot_stage2/include',
     ]
 
+if GetDepend(['PKG_USING_WLAN_CYW43439']):
+    path += [
+        cwd + '/rp2_common/pico_cyw43_arch/include',
+        cwd + '/rp2_common/pico_unique_id/include',
+        cwd + '/rp2_common/pico_async_context/include',
+        cwd + '/rp2_common/pico_cyw43_driver/include',
+        cwd + '/rp2_common/pico_lwip/include',
+        cwd + '/rp2_common/pico_lwip/include/arch',
+        cwd + '/rp2_common/pico_lwip/include/pico',
+        cwd + '/rp2_common/hardware_pio/include',
+        cwd + '/rp2_common/pico_rand/include',
+    ]
+    src += [
+        cwd + '/rp2_common/pico_unique_id/unique_id.c',
+        cwd + '/rp2_common/pico_cyw43_arch/cyw43_arch.c',
+        cwd + '/rp2_common/pico_cyw43_driver/cyw43_driver.c',
+        cwd + '/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c',
+        cwd + '/rp2_common/hardware_pio/pio.c',
+        cwd + '/rp2_common/pico_async_context/async_context_base.c',
+    ]
+
 CPPDEFINES = [
     'PICO_NO_BINARY_INFO',
     'PICO_NO_PROGRAM_INFO',
