@@ -1,0 +1,26 @@
+import rtconfig
+Import('RTT_ROOT')
+from building import *
+
+# get current directory
+cwd = GetCurrentDir()
+path = []
+src = []
+
+# The set of source files associated with this SConscript file.
+
+if GetDepend(['PKG_USING_WLAN_CYW43439']):
+    path += [
+        cwd + '/cyw43-driver/src',
+        cwd + '/cyw43-driver/firmware',
+    ]
+    src += [
+        cwd + '/cyw43-driver/src/cyw43_ctrl.c',
+        cwd + '/cyw43-driver/src/cyw43_ll.c',
+        cwd + '/cyw43-driver/src/cyw43_lwip.c',
+        cwd + '/cyw43-driver/src/cyw43_ll.c',
+    ]
+
+group = DefineGroup('raspberrypi-pico-lib', src, depend = [''], CPPPATH = path)
+
+Return('group')
