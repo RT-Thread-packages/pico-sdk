@@ -111,7 +111,6 @@ path = [
 
 if GetDepend(['PKG_USING_WLAN_CYW43439']):
     path += [
-        cwd + '/rp2_common/pico_cyw43_arch/include',
         cwd + '/rp2_common/pico_unique_id/include',
         cwd + '/rp2_common/pico_async_context/include',
         cwd + '/rp2_common/pico_cyw43_driver/include',
@@ -123,7 +122,6 @@ if GetDepend(['PKG_USING_WLAN_CYW43439']):
     ]
     src += [
         cwd + '/rp2_common/pico_unique_id/unique_id.c',
-        cwd + '/rp2_common/pico_cyw43_arch/cyw43_arch.c',
         cwd + '/rp2_common/pico_cyw43_driver/cyw43_driver.c',
         cwd + '/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.c',
         cwd + '/rp2_common/hardware_pio/pio.c',
