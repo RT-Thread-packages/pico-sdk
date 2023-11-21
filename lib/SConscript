@@ -4,15 +4,17 @@ from building import *
 
 # get current directory
 cwd = GetCurrentDir()
+path = []
+src = []
 
 # The set of source files associated with this SConscript file.
 
 if GetDepend(['PKG_USING_WLAN_CYW43439']):
-    path = [
+    path += [
         cwd + '/cyw43-driver/src',
         cwd + '/cyw43-driver/firmware',
     ]
-    src = [
+    src += [
         cwd + '/cyw43-driver/src/cyw43_ctrl.c',
         cwd + '/cyw43-driver/src/cyw43_ll.c',
         cwd + '/cyw43-driver/src/cyw43_lwip.c',
