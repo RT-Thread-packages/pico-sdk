@@ -33,6 +33,7 @@ common/pico_util/queue.c
 rp2_common/pico_runtime/runtime.c
 rp2_common/hardware_clocks/clocks.c
 rp2_common/hardware_watchdog/watchdog.c
+rp2_common/hardware_rtc/rtc.c
 rp2_common/hardware_xosc/xosc.c
 rp2_common/hardware_pll/pll.c
 rp2_common/hardware_vreg/vreg.c
@@ -82,6 +83,7 @@ path = [
     cwd + '/rp2_common/hardware_spi/include',
     cwd + '/rp2_common/hardware_i2c/include',
     cwd + '/rp2_common/hardware_pwm/include',
+    cwd + '/rp2_common/hardware_rtc/include',
     cwd + '/rp2_common/hardware_divider/include',
     cwd + '/common/pico_time/include',
     cwd + '/rp2_common/hardware_timer/include',
