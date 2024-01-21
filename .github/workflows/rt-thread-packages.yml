@@ -1,4 +1,4 @@
-name: RT-Thread_Packages_Test
+name: RT-Thread Packages Test
 
 on:
   [push, pull_request]
