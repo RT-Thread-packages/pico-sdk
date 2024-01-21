@@ -4,9 +4,22 @@ from building import *
 
 # get current directory
 cwd = GetCurrentDir()
+src = []
+path = []
+
+# Add CMSIS source files and header files' path
+
+src += Split("""
+rp2_common/cmsis/stub/CMSIS/Device/RaspberryPi/RP2040/Source/system_RP2040.c
+""")
+
+path += [
+    cwd + '/rp2_common/cmsis/stub/CMSIS/Core/Include',
+    cwd + '/rp2_common/cmsis/stub/CMSIS/Device/RaspberryPi/RP2040/Include',
+    ]
 
 # The set of source files associated with this SConscript file.
-src = Split("""
+src += Split("""
 rp2_common/hardware_flash/flash.c
 rp2_common/pico_multicore/multicore.c
 rp2_common/pico_stdlib/stdlib.c
@@ -63,7 +76,7 @@ rp2_common/pico_standard_link/crt0.S
 ../bs2_default_padded_checksummed.S
 """)
 
-path = [
+path += [
     cwd + '/rp2_common/hardware_flash/include',
     cwd + '/rp2_common/pico_multicore/include',
     cwd + '/common/pico_stdlib/include',
