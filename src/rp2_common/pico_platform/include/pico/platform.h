@@ -471,7 +471,7 @@ __force_inline static int32_t __mul_instruction(int32_t a, int32_t b) {
  *  This macro can be useful in other macros along with `typeof` to assert that two parameters are of equivalent type
  *  (or that a single parameter is of an expected type)
  */
-#define __check_type_compatible(type_a, type_b) static_assert(__builtin_types_compatible_p(type_a, type_b), __STRING(type_a) " is not compatible with " __STRING(type_b));
+#define __check_type_compatible(type_a, type_b) pico_static_assert(__builtin_types_compatible_p(type_a, type_b), __STRING(type_a) " is not compatible with " __STRING(type_b));
 
 /*! \brief Get the current exception level on this core
  *  \ingroup pico_platform

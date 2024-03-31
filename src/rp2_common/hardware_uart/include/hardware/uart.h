@@ -103,7 +103,7 @@ static inline uint uart_get_index(uart_inst_t *uart) {
 }
 
 static inline uart_inst_t *uart_get_instance(uint instance) {
-    static_assert(NUM_UARTS == 2, "");
+    pico_static_assert(NUM_UARTS == 2, "");
     invalid_params_if(UART, instance >= NUM_UARTS);
     return instance ? uart1 : uart0;
 }
@@ -455,9 +455,9 @@ bool uart_is_readable_within_us(uart_inst_t *uart, uint32_t us);
  * \param is_tx true for sending data to the UART instance, false for receiving data from the UART instance
  */
 static inline uint uart_get_dreq(uart_inst_t *uart, bool is_tx) {
-    static_assert(DREQ_UART0_RX == DREQ_UART0_TX + 1, "");
-    static_assert(DREQ_UART1_RX == DREQ_UART1_TX + 1, "");
-    static_assert(DREQ_UART1_TX == DREQ_UART0_TX + 2, "");
+    pico_static_assert(DREQ_UART0_RX == DREQ_UART0_TX + 1, "");
+    pico_static_assert(DREQ_UART1_RX == DREQ_UART1_TX + 1, "");
+    pico_static_assert(DREQ_UART1_TX == DREQ_UART0_TX + 2, "");
     return DREQ_UART0_TX + uart_get_index(uart) * 2 + !is_tx;
 }
 

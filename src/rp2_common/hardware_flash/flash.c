@@ -159,7 +159,7 @@ void __no_inline_not_in_flash_func(flash_do_cmd)(const uint8_t *txbuf, uint8_t *
 // Use standard RUID command to get a unique identifier for the flash (and
 // hence the board)
 
-static_assert(FLASH_UNIQUE_ID_SIZE_BYTES == FLASH_RUID_DATA_BYTES, "");
+pico_static_assert(FLASH_UNIQUE_ID_SIZE_BYTES == FLASH_RUID_DATA_BYTES, "");
 
 void flash_get_unique_id(uint8_t *id_out) {
 #if PICO_NO_FLASH

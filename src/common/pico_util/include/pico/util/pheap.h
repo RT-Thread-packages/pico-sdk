@@ -279,7 +279,7 @@ void ph_post_alloc_init(pheap_t *heap, uint max_nodes, pheap_comparator comparat
  * by ph_post_alloc_init
  */
 #define PHEAP_DEFINE_STATIC(name, _max_nodes) \
-    static_assert(_max_nodes && _max_nodes < (1u << (8 * sizeof(pheap_node_id_t))), ""); \
+    pico_static_assert(_max_nodes && _max_nodes < (1u << (8 * sizeof(pheap_node_id_t))), ""); \
     static pheap_node_t name ## _nodes[_max_nodes]; \
     static pheap_t name = { \
             .nodes = name ## _nodes, \

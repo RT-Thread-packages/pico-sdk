@@ -41,6 +41,6 @@ struct uf2_block {
     uint32_t magic_end;
 };
 
-static_assert(sizeof(struct uf2_block) == 512, "uf2_block not sector sized");
+pico_static_assert(sizeof(struct uf2_block) == 512, "uf2_block not sector sized");
 
 #endif

@@ -182,15 +182,15 @@ static void initialise_rand(void) {
 #endif
 
 #if PICO_RAND_SEED_ENTROPY_SRC_BOARD_ID
-    static_assert(PICO_UNIQUE_BOARD_ID_SIZE_BYTES == sizeof(uint64_t),
+    pico_static_assert(PICO_UNIQUE_BOARD_ID_SIZE_BYTES == sizeof(uint64_t),
                   "Code below requires that 'board_id' is 64-bits in size");
 
-    // Note! The safety of the length assumption here is protected by a 'static_assert' above
+    // Note! The safety of the length assumption here is protected by a 'pico_static_assert' above
     union unique_id_u {
         pico_unique_board_id_t board_id_native;
         uint64_t board_id_u64;
     } unique_id;
-    // Note! The safety of the length assumption here is protected by a 'static_assert' above
+    // Note! The safety of the length assumption here is protected by a 'pico_static_assert' above
     pico_get_unique_board_id(&unique_id.board_id_native);
     local_rng_state.r[which] ^= splitmix64(unique_id.board_id_u64);
     which ^= 1;

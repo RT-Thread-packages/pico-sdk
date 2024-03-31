@@ -211,6 +211,6 @@ typedef struct {
 #define iobank0_hw ((iobank0_hw_t *)IO_BANK0_BASE)
 /// \end::iobank0_hw[]
 
-static_assert( NUM_BANK0_GPIOS == 30, "");
+pico_static_assert( NUM_BANK0_GPIOS == 30, "");
 
 #endif

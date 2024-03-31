@@ -278,7 +278,7 @@ typedef struct {
 #define pio0_hw ((pio_hw_t *)PIO0_BASE)
 #define pio1_hw ((pio_hw_t *)PIO1_BASE)
 
-static_assert( NUM_PIO_STATE_MACHINES == 4, "");
-static_assert( PIO_INSTRUCTION_COUNT == 32, "");
+pico_static_assert( NUM_PIO_STATE_MACHINES == 4, "");
+pico_static_assert( PIO_INSTRUCTION_COUNT == 32, "");
 
 #endif

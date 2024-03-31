@@ -15,7 +15,7 @@ static hardware_alarm_callback_t alarm_callbacks[NUM_TIMERS];
 static uint32_t target_hi[NUM_TIMERS];
 static uint8_t timer_callbacks_pending;
 
-static_assert(NUM_TIMERS <= 4, "");
+pico_static_assert(NUM_TIMERS <= 4, "");
 static uint8_t claimed;
 
 void hardware_alarm_claim(uint alarm_num) {

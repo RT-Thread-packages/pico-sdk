@@ -34,7 +34,7 @@ static void *chars_available_param;
 static critical_section_t one_shot_timer_crit_sec;
 static volatile bool one_shot_timer_pending;
 #ifdef PICO_STDIO_USB_LOW_PRIORITY_IRQ
-static_assert(PICO_STDIO_USB_LOW_PRIORITY_IRQ >= NUM_IRQS - NUM_USER_IRQS, "");
+pico_static_assert(PICO_STDIO_USB_LOW_PRIORITY_IRQ >= NUM_IRQS - NUM_USER_IRQS, "");
 #define low_priority_irq_num PICO_STDIO_USB_LOW_PRIORITY_IRQ
 #else
 static uint8_t low_priority_irq_num;

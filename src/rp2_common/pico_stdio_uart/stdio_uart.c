@@ -111,7 +111,7 @@ static void on_uart_rx(void) {
 }
 
 static void stdio_uart_set_chars_available_callback(void (*fn)(void*), void *param) {
-    static_assert(UART1_IRQ == UART0_IRQ + 1, "");
+    pico_static_assert(UART1_IRQ == UART0_IRQ + 1, "");
     const uint UART_IRQ = UART0_IRQ + uart_get_index(uart_instance);
     if (fn && !chars_available_callback) {
         irq_set_exclusive_handler(UART_IRQ, on_uart_rx);

@@ -18,7 +18,7 @@ int __time_critical_func(sem_available)(semaphore_t *sem) {
 #ifdef __GNUC__
     return *(volatile typeof(sem->permits) *) &sem->permits;
 #else
-    static_assert(sizeof(sem->permits) == 2, "");
+    pico_static_assert(sizeof(sem->permits) == 2, "");
     return *(volatile int16_t *) &sem->permits;
 #endif
 }

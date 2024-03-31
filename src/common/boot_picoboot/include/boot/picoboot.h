@@ -110,7 +110,7 @@ struct __packed __aligned(4) picoboot_cmd {
     };
 };
 
-static_assert(32 == sizeof(struct picoboot_cmd), "picoboot_cmd must be 32 bytes big");
+pico_static_assert(32 == sizeof(struct picoboot_cmd), "picoboot_cmd must be 32 bytes big");
 
 struct __packed __aligned(4) picoboot_cmd_status {
     uint32_t dToken;
@@ -120,5 +120,5 @@ struct __packed __aligned(4) picoboot_cmd_status {
     uint8_t _pad[6];
 };
 
-static_assert(16 == sizeof(struct picoboot_cmd_status), "picoboot_cmd_status must be 16 bytes big");
+pico_static_assert(16 == sizeof(struct picoboot_cmd_status), "picoboot_cmd_status must be 16 bytes big");
 #endif

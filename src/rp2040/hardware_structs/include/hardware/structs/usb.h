@@ -88,8 +88,8 @@ typedef struct {
     uint8_t epx_data[USB_DPRAM_MAX - 0x180];
 } usb_device_dpram_t;
 
-static_assert(sizeof(usb_device_dpram_t) == USB_DPRAM_MAX, "");
-static_assert(offsetof(usb_device_dpram_t, epx_data) == 0x180, "");
+pico_static_assert(sizeof(usb_device_dpram_t) == USB_DPRAM_MAX, "");
+pico_static_assert(offsetof(usb_device_dpram_t, epx_data) == 0x180, "");
 
 typedef struct {
     // 4K of DPSRAM at beginning. Note this supports 8, 16, and 32 bit accesses
@@ -118,8 +118,8 @@ typedef struct {
     uint8_t epx_data[USB_DPRAM_MAX - 0x180];
 } usb_host_dpram_t;
 
-static_assert(sizeof(usb_host_dpram_t) == USB_DPRAM_MAX, "");
-static_assert(offsetof(usb_host_dpram_t, epx_data) == 0x180, "");
+pico_static_assert(sizeof(usb_host_dpram_t) == USB_DPRAM_MAX, "");
+pico_static_assert(offsetof(usb_host_dpram_t, epx_data) == 0x180, "");
 
 typedef struct {
     _REG_(USB_ADDR_ENDP_OFFSET) // USB_ADDR_ENDP
@@ -573,6 +573,6 @@ typedef struct {
 #define usb_dpram ((usb_device_dpram_t *)USBCTRL_DPRAM_BASE)
 #define usbh_dpram ((usb_host_dpram_t *)USBCTRL_DPRAM_BASE)
 
-static_assert( USB_HOST_INTERRUPT_ENDPOINTS == 15, "");
+pico_static_assert( USB_HOST_INTERRUPT_ENDPOINTS == 15, "");
 
 #endif

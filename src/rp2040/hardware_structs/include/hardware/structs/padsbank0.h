@@ -42,6 +42,6 @@ typedef struct {
 
 #define padsbank0_hw ((padsbank0_hw_t *)PADS_BANK0_BASE)
 
-static_assert( NUM_BANK0_GPIOS == 30, "");
+pico_static_assert( NUM_BANK0_GPIOS == 30, "");
 
 #endif

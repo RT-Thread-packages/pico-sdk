@@ -313,7 +313,7 @@ int elf2uf2(FILE *in, FILE *out) {
         } else if (eh.entry != expected_ep) {
             return fail(ERROR_INCOMPATIBLE, "A RAM binary should have an entry point at the beginning: %08x (not %08x)\n", expected_ep, eh.entry);
         }
-        static_assert(0 == (MAIN_RAM_START & (PAGE_SIZE - 1)), "");
+        pico_static_assert(0 == (MAIN_RAM_START & (PAGE_SIZE - 1)), "");
         // currently don't require this as entry point is now at the start, we don't know where reset vector is
 #if 0
         uint8_t buf[PAGE_SIZE];

@@ -884,9 +884,9 @@ static inline void dma_timer_set_fraction(uint timer, uint16_t numerator, uint16
  * \param timer_num DMA timer number 0-3
  */
 static inline uint dma_get_timer_dreq(uint timer_num) {
-    static_assert(DREQ_DMA_TIMER1 == DREQ_DMA_TIMER0 + 1, "");
-    static_assert(DREQ_DMA_TIMER2 == DREQ_DMA_TIMER0 + 2, "");
-    static_assert(DREQ_DMA_TIMER3 == DREQ_DMA_TIMER0 + 3, "");
+    pico_static_assert(DREQ_DMA_TIMER1 == DREQ_DMA_TIMER0 + 1, "");
+    pico_static_assert(DREQ_DMA_TIMER2 == DREQ_DMA_TIMER0 + 2, "");
+    pico_static_assert(DREQ_DMA_TIMER3 == DREQ_DMA_TIMER0 + 3, "");
     check_dma_timer_param(timer_num);
     return DREQ_DMA_TIMER0 + timer_num;
 }

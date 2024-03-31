@@ -7,7 +7,7 @@
 #include "hardware/sync.h"
 #include "hardware/claim.h"
 
-static_assert(PICO_SPINLOCK_ID_STRIPED_LAST >= PICO_SPINLOCK_ID_STRIPED_FIRST, "");
+pico_static_assert(PICO_SPINLOCK_ID_STRIPED_LAST >= PICO_SPINLOCK_ID_STRIPED_FIRST, "");
 static uint8_t striped_spin_lock_num = PICO_SPINLOCK_ID_STRIPED_FIRST;
 static uint32_t claimed;
 

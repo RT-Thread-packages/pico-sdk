@@ -321,6 +321,6 @@ typedef struct {
 
 #define clocks_hw ((clocks_hw_t *)CLOCKS_BASE)
 
-static_assert( CLK_COUNT == 10, "");
+pico_static_assert( CLK_COUNT == 10, "");
 
 #endif

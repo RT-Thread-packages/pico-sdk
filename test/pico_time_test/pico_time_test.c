@@ -15,7 +15,7 @@ PICOTEST_MODULE_NAME("pico_time_test", "pico_time test harness");
 
 #define NUM_TIMEOUTS 500
 #define MAX_TIMERS_PER_POOL 250
-static_assert(PICO_TIME_DEFAULT_ALARM_POOL_MAX_TIMERS >= MAX_TIMERS_PER_POOL, "");
+pico_static_assert(PICO_TIME_DEFAULT_ALARM_POOL_MAX_TIMERS >= MAX_TIMERS_PER_POOL, "");
 #define TEST_LENGTH_US 2000000
 
 #ifndef NDEBUG

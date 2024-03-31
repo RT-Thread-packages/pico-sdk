@@ -71,7 +71,7 @@ __force_inline static uint32_t __swap16x2(uint32_t a) {
 #ifndef CYW43_SPI_PIO_PREFERRED_PIO
 #define CYW43_SPI_PIO_PREFERRED_PIO 1
 #endif
-static_assert(CYW43_SPI_PIO_PREFERRED_PIO >=0 && CYW43_SPI_PIO_PREFERRED_PIO < NUM_PIOS, "");
+pico_static_assert(CYW43_SPI_PIO_PREFERRED_PIO >=0 && CYW43_SPI_PIO_PREFERRED_PIO < NUM_PIOS, "");
 
 typedef struct {
     pio_hw_t *pio;
@@ -88,7 +88,7 @@ int cyw43_spi_init(cyw43_int_t *self) {
     // Only does something if CYW43_LOGIC_DEBUG=1
     logic_debug_init();
 
-    static_assert(NUM_PIOS == 2, "");
+    pico_static_assert(NUM_PIOS == 2, "");
 
     pio_hw_t *pios[2] = {pio0, pio1};
     uint pio_index = CYW43_SPI_PIO_PREFERRED_PIO;
@@ -106,7 +106,7 @@ int cyw43_spi_init(cyw43_int_t *self) {
     bus_data->dma_in = -1;
     bus_data->dma_out = -1;
 
-    static_assert(GPIO_FUNC_PIO1 == GPIO_FUNC_PIO0 + 1, "");
+    pico_static_assert(GPIO_FUNC_PIO1 == GPIO_FUNC_PIO0 + 1, "");
     bus_data->pio_func_sel = GPIO_FUNC_PIO0 + pio_index;
     bus_data->pio_sm = (int8_t)pio_claim_unused_sm(bus_data->pio, false);
     if (bus_data->pio_sm < 0) {
@@ -395,7 +395,7 @@ uint32_t read_reg_u32_swap(cyw43_int_t *self, uint32_t fn, uint32_t reg) {
 
 static inline uint32_t _cyw43_read_reg(cyw43_int_t *self, uint32_t fn, uint32_t reg, uint size) {
     // Padding plus max read size of 32 bits + another 4?
-    static_assert(CYW43_BACKPLANE_READ_PAD_LEN_BYTES % 4 == 0, "");
+    pico_static_assert(CYW43_BACKPLANE_READ_PAD_LEN_BYTES % 4 == 0, "");
     int index = (CYW43_BACKPLANE_READ_PAD_LEN_BYTES / 4) + 1 + 1;
     uint32_t buf32[index];
     uint8_t *buf = (uint8_t *)buf32;

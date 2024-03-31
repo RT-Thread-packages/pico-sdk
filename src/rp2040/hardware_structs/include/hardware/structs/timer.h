@@ -102,6 +102,6 @@ typedef struct {
 
 #define timer_hw ((timer_hw_t *)TIMER_BASE)
 
-static_assert( NUM_TIMERS == 4, "");
+pico_static_assert( NUM_TIMERS == 4, "");
 
 #endif

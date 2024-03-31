@@ -173,7 +173,7 @@ void multicore_launch_core1_raw(void (*entry)(void), uint32_t *sp, uint32_t vect
 #define LOCKOUT_MAGIC_START 0x73a8831eu
 #define LOCKOUT_MAGIC_END (~LOCKOUT_MAGIC_START)
 
-static_assert(SIO_IRQ_PROC1 == SIO_IRQ_PROC0 + 1, "");
+pico_static_assert(SIO_IRQ_PROC1 == SIO_IRQ_PROC0 + 1, "");
 
 static mutex_t lockout_mutex;
 static bool lockout_in_progress;

@@ -197,7 +197,7 @@ typedef struct {
 #define dma_hw ((dma_hw_t *)DMA_BASE)
 #define dma_debug_hw ((dma_debug_hw_t *)(DMA_BASE + DMA_CH0_DBG_CTDREQ_OFFSET))
 
-static_assert( NUM_DMA_TIMERS == 4, "");
-static_assert( NUM_DMA_CHANNELS == 12, "");
+pico_static_assert( NUM_DMA_TIMERS == 4, "");
+pico_static_assert( NUM_DMA_CHANNELS == 12, "");
 
 #endif

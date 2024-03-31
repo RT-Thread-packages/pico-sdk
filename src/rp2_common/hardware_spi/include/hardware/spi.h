@@ -359,9 +359,9 @@ int spi_read16_blocking(spi_inst_t *spi, uint16_t repeated_tx_data, uint16_t *ds
  * \param is_tx true for sending data to the SPI instance, false for receiving data from the SPI instance
  */
 static inline uint spi_get_dreq(spi_inst_t *spi, bool is_tx) {
-    static_assert(DREQ_SPI0_RX == DREQ_SPI0_TX + 1, "");
-    static_assert(DREQ_SPI1_RX == DREQ_SPI1_TX + 1, "");
-    static_assert(DREQ_SPI1_TX == DREQ_SPI0_TX + 2, "");
+    pico_static_assert(DREQ_SPI0_RX == DREQ_SPI0_TX + 1, "");
+    pico_static_assert(DREQ_SPI1_RX == DREQ_SPI1_TX + 1, "");
+    pico_static_assert(DREQ_SPI1_TX == DREQ_SPI0_TX + 2, "");
     return DREQ_SPI0_TX + spi_get_index(spi) * 2 + !is_tx;
 }
 

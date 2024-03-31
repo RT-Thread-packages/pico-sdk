@@ -18,6 +18,13 @@ extern "C" {
 #include <assert.h>
 #endif
 
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)
+/* static_assert is only existed >= C++11 */
+#define pico_static_assert(expr, msg) static_assert(expr, msg)
+#else
+#define pico_static_assert(expr, msg)
+#endif
+
 // PICO_CONFIG: PARAM_ASSERTIONS_ENABLE_ALL, Global assert enable, type=bool, default=0, group=pico_base
 // PICO_CONFIG: PARAM_ASSERTIONS_DISABLE_ALL, Global assert disable, type=bool, default=0, group=pico_base
 

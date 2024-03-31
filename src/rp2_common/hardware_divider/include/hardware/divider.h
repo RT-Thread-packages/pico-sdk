@@ -80,7 +80,7 @@ static inline void hw_divider_divmod_u32_start(uint32_t a, uint32_t b) {
  */
 static inline void hw_divider_wait_ready(void) {
     // this is #1 in lsr below
-    static_assert(SIO_DIV_CSR_READY_BITS == 1, "");
+    pico_static_assert(SIO_DIV_CSR_READY_BITS == 1, "");
 
     // we use one less register and instruction than gcc which uses a TST instruction
 

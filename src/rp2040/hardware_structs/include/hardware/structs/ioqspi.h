@@ -169,6 +169,6 @@ typedef struct {
 
 #define ioqspi_hw ((ioqspi_hw_t *)IO_QSPI_BASE)
 
-static_assert( NUM_QSPI_GPIOS == 6, "");
+pico_static_assert( NUM_QSPI_GPIOS == 6, "");
 
 #endif

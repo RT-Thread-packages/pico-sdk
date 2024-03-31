@@ -17,7 +17,7 @@ check_hw_layout(pio_hw_t, txf[1], PIO_TXF1_OFFSET);
 check_hw_layout(pio_hw_t, rxf[3], PIO_RXF3_OFFSET);
 check_hw_layout(pio_hw_t, ints1, PIO_IRQ1_INTS_OFFSET);
 
-static_assert(NUM_PIO_STATE_MACHINES * NUM_PIOS <= 8, "");
+pico_static_assert(NUM_PIO_STATE_MACHINES * NUM_PIOS <= 8, "");
 static uint8_t claimed;
 
 void pio_sm_claim(PIO pio, uint sm) {
@@ -57,7 +57,7 @@ bool pio_sm_is_claimed(PIO pio, uint sm) {
     return hw_is_claimed(&claimed, which * NUM_PIO_STATE_MACHINES + sm);
 }
 
-static_assert(PIO_INSTRUCTION_COUNT <= 32, "");
+pico_static_assert(PIO_INSTRUCTION_COUNT <= 32, "");
 static uint32_t _used_instruction_space[2];
 
 static int _pio_find_offset_for_program(PIO pio, const pio_program_t *program) {

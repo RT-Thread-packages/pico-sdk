@@ -52,8 +52,8 @@
 extern "C" {
 #endif
 
-#define check_hw_layout(type, member, offset) static_assert(offsetof(type, member) == (offset), "hw offset mismatch")
-#define check_hw_size(type, size) static_assert(sizeof(type) == (size), "hw size mismatch")
+#define check_hw_layout(type, member, offset) pico_static_assert(offsetof(type, member) == (offset), "hw offset mismatch")
+#define check_hw_size(type, size) pico_static_assert(sizeof(type) == (size), "hw size mismatch")
 
 // PICO_CONFIG: PARAM_ASSERTIONS_ENABLED_ADDRESS_ALIAS, Enable/disable assertions in memory address aliasing macros, type=bool, default=0, group=hardware_base
 #ifndef PARAM_ASSERTIONS_ENABLED_ADDRESS_ALIAS

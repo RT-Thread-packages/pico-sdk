@@ -154,7 +154,7 @@ static inline i2c_hw_t *i2c_get_hw(i2c_inst_t *i2c) {
 }
 
 static inline i2c_inst_t *i2c_get_instance(uint instance) {
-    static_assert(NUM_I2CS == 2, "");
+    pico_static_assert(NUM_I2CS == 2, "");
     invalid_params_if(I2C, instance >= NUM_I2CS);
     return instance ? i2c1 : i2c0;
 }
@@ -356,9 +356,9 @@ static inline void i2c_write_byte_raw(i2c_inst_t *i2c, uint8_t value) {
  * \param is_tx true for sending data to the I2C instance, false for receiving data from the I2C instance
  */
 static inline uint i2c_get_dreq(i2c_inst_t *i2c, bool is_tx) {
-    static_assert(DREQ_I2C0_RX == DREQ_I2C0_TX + 1, "");
-    static_assert(DREQ_I2C1_RX == DREQ_I2C1_TX + 1, "");
-    static_assert(DREQ_I2C1_TX == DREQ_I2C0_TX + 2, "");
+    pico_static_assert(DREQ_I2C0_RX == DREQ_I2C0_TX + 1, "");
+    pico_static_assert(DREQ_I2C1_RX == DREQ_I2C1_TX + 1, "");
+    pico_static_assert(DREQ_I2C1_TX == DREQ_I2C0_TX + 2, "");
     return DREQ_I2C0_TX + i2c_hw_index(i2c) * 2 + !is_tx;
 }
 

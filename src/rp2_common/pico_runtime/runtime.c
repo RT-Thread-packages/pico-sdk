@@ -124,10 +124,10 @@ void runtime_init(void) {
     // however each starts with a lock_core_t, and the spin_lock is initialized to address 1 for a recursive
     // spinlock and 0 for a regular one.
 
-    static_assert(!(sizeof(mutex_t)&3), "");
-    static_assert(!(sizeof(recursive_mutex_t)&3), "");
-    static_assert(!offsetof(mutex_t, core), "");
-    static_assert(!offsetof(recursive_mutex_t, core), "");
+    pico_static_assert(!(sizeof(mutex_t)&3), "");
+    pico_static_assert(!(sizeof(recursive_mutex_t)&3), "");
+    pico_static_assert(!offsetof(mutex_t, core), "");
+    pico_static_assert(!offsetof(recursive_mutex_t, core), "");
     extern lock_core_t __mutex_array_start;
     extern lock_core_t __mutex_array_end;
 

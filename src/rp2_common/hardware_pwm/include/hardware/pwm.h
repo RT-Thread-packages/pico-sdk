@@ -566,8 +566,8 @@ static inline void pwm_force_irq(uint slice_num) {
  * \param slice_num PWM slice number
  */
 static inline uint pwm_get_dreq(uint slice_num) {
-    static_assert(DREQ_PWM_WRAP1 == DREQ_PWM_WRAP0 + 1, "");
-    static_assert(DREQ_PWM_WRAP7 == DREQ_PWM_WRAP0 + 7, "");
+    pico_static_assert(DREQ_PWM_WRAP1 == DREQ_PWM_WRAP0 + 1, "");
+    pico_static_assert(DREQ_PWM_WRAP7 == DREQ_PWM_WRAP0 + 7, "");
     check_slice_num_param(slice_num);
     return DREQ_PWM_WRAP0 + slice_num;
 }

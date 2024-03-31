@@ -124,7 +124,7 @@ enum gpio_slew_rate gpio_get_slew_rate(uint gpio) {
 
 
 // Enum encoding should match hardware encoding on RP2040
-static_assert(PADS_BANK0_GPIO0_DRIVE_VALUE_8MA == GPIO_DRIVE_STRENGTH_8MA, "");
+pico_static_assert(PADS_BANK0_GPIO0_DRIVE_VALUE_8MA == GPIO_DRIVE_STRENGTH_8MA, "");
 void gpio_set_drive_strength(uint gpio, enum gpio_drive_strength drive) {
     check_gpio_param(gpio);
     hw_write_masked(&padsbank0_hw->io[gpio],

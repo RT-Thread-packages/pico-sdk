@@ -47,7 +47,7 @@
 extern "C" {
 #endif
 
-static_assert(PIO_SM0_SHIFTCTRL_FJOIN_RX_LSB == PIO_SM0_SHIFTCTRL_FJOIN_TX_LSB + 1, "");
+pico_static_assert(PIO_SM0_SHIFTCTRL_FJOIN_RX_LSB == PIO_SM0_SHIFTCTRL_FJOIN_TX_LSB + 1, "");
 
 /** \brief FIFO join states
  *  \ingroup hardware_pio
@@ -444,11 +444,11 @@ static inline void pio_gpio_init(PIO pio, uint pin) {
  * \param is_tx true for sending data to the state machine, false for receiving data from the state machine
  */
 static inline uint pio_get_dreq(PIO pio, uint sm, bool is_tx) {
-    static_assert(DREQ_PIO0_TX1 == DREQ_PIO0_TX0 + 1, "");
-    static_assert(DREQ_PIO0_TX2 == DREQ_PIO0_TX0 + 2, "");
-    static_assert(DREQ_PIO0_TX3 == DREQ_PIO0_TX0 + 3, "");
-    static_assert(DREQ_PIO0_RX0 == DREQ_PIO0_TX0 + NUM_PIO_STATE_MACHINES, "");
-    static_assert(DREQ_PIO1_RX0 == DREQ_PIO1_TX0 + NUM_PIO_STATE_MACHINES, "");
+    pico_static_assert(DREQ_PIO0_TX1 == DREQ_PIO0_TX0 + 1, "");
+    pico_static_assert(DREQ_PIO0_TX2 == DREQ_PIO0_TX0 + 2, "");
+    pico_static_assert(DREQ_PIO0_TX3 == DREQ_PIO0_TX0 + 3, "");
+    pico_static_assert(DREQ_PIO0_RX0 == DREQ_PIO0_TX0 + NUM_PIO_STATE_MACHINES, "");
+    pico_static_assert(DREQ_PIO1_RX0 == DREQ_PIO1_TX0 + NUM_PIO_STATE_MACHINES, "");
     check_pio_param(pio);
     check_sm_param(sm);
     return sm + (is_tx ? 0 : NUM_PIO_STATE_MACHINES) + (pio == pio0 ? DREQ_PIO0_TX0 : DREQ_PIO1_TX0);

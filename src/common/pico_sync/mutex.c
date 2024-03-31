@@ -82,7 +82,7 @@ bool __time_critical_func(mutex_try_enter)(mutex_t *mtx, uint32_t *owner_out) {
 
 bool __time_critical_func(mutex_try_enter_block_until)(mutex_t *mtx, absolute_time_t until) {
     // not using lock_owner_id_t to avoid backwards incompatibility change to mutex_try_enter API
-    static_assert(sizeof(lock_owner_id_t) <= 4, "");
+    pico_static_assert(sizeof(lock_owner_id_t) <= 4, "");
     uint32_t owner;
     if (!mutex_try_enter(mtx, &owner)) {
         if ((lock_owner_id_t)owner == lock_get_caller_owner_id()) return false; // deadlock, so we can never own it

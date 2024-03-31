@@ -121,6 +121,6 @@ typedef struct {
 
 #define pwm_hw ((pwm_hw_t *)PWM_BASE)
 
-static_assert( NUM_PWM_SLICES == 8, "");
+pico_static_assert( NUM_PWM_SLICES == 8, "");
 
 #endif

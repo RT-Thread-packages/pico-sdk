@@ -74,7 +74,7 @@ void irq_set_pending(uint num) {
 
 #if !PICO_DISABLE_SHARED_IRQ_HANDLERS
 // limited by 8 bit relative links (and reality)
-static_assert(PICO_MAX_SHARED_IRQ_HANDLERS >= 1 && PICO_MAX_SHARED_IRQ_HANDLERS < 0x7f, "");
+pico_static_assert(PICO_MAX_SHARED_IRQ_HANDLERS >= 1 && PICO_MAX_SHARED_IRQ_HANDLERS < 0x7f, "");
 
 // note these are not real functions, they are code fragments (i.e. don't call them)
 extern void irq_handler_chain_first_slot(void);
@@ -182,7 +182,7 @@ static inline void *resolve_branch(uint16_t *inst) {
 
 // GCC produces horrible code for subtraction of pointers here, and it was bugging me
 static inline int8_t slot_diff(struct irq_handler_chain_slot *to, struct irq_handler_chain_slot *from) {
-    static_assert(sizeof(struct irq_handler_chain_slot) == 12, "");
+    pico_static_assert(sizeof(struct irq_handler_chain_slot) == 12, "");
     int32_t result = 0xaaaa;
     // return (to - from);
     // note this implementation has limited range, but is fine for plenty more than -128->127 result
@@ -426,7 +426,7 @@ void irq_add_tail_to_free_list(struct irq_handler_chain_slot *slot) {
 
 void irq_init_priorities() {
 #if PICO_DEFAULT_IRQ_PRIORITY != 0
-    static_assert(!(NUM_IRQS & 3), "");
+    pico_static_assert(!(NUM_IRQS & 3), "");
     uint32_t prio4 = (PICO_DEFAULT_IRQ_PRIORITY & 0xff) * 0x1010101u;
     io_rw_32 * p = (io_rw_32 *)(PPB_BASE + M0PLUS_NVIC_IPR0_OFFSET);
     for (uint i = 0; i < NUM_IRQS / 4; i++) {
@@ -438,7 +438,7 @@ void irq_init_priorities() {
 static uint get_user_irq_claim_index(uint irq_num) {
     invalid_params_if(IRQ, irq_num < FIRST_USER_IRQ || irq_num >= NUM_IRQS);
     // we count backwards from the last, to match the existing hard coded uses of user IRQs in the SDK which were previously using 31
-    static_assert(NUM_IRQS - FIRST_USER_IRQ <= 8, ""); // we only use a single byte's worth of claim bits today.
+    pico_static_assert(NUM_IRQS - FIRST_USER_IRQ <= 8, ""); // we only use a single byte's worth of claim bits today.
     return NUM_IRQS - irq_num  - 1u;
 }
 

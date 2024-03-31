@@ -12,7 +12,7 @@ check_hw_size(interp_hw_t, SIO_INTERP1_ACCUM0_OFFSET - SIO_INTERP0_ACCUM0_OFFSET
 
 check_hw_layout(sio_hw_t, interp, SIO_INTERP0_ACCUM0_OFFSET);
 
-static_assert(NUM_DMA_CHANNELS <= 16, "");
+pico_static_assert(NUM_DMA_CHANNELS <= 16, "");
 
 static uint8_t _claimed;
 
